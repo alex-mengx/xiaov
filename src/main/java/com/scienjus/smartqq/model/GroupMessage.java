@@ -12,70 +12,79 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class GroupMessage {
 
-    private long groupId;
+	private long groupId;
 
-    private long time;
+	private long time;
 
-    private String content;
+	private String content;
 
-    private long userId;
+	private long userId;
 
-    private Font font;
+	private Font font;
 
-    public GroupMessage(JSONObject json) {
-        JSONArray cont = json.getJSONArray("content");
-        this.font = cont.getJSONArray(0).getObject(1, Font.class);
+	public GroupMessage(JSONObject json) {
+		JSONArray cont = json.getJSONArray("content");
+		font = cont.getJSONArray(0).getObject(1, Font.class);
 
-        final int size = cont.size();
-        final StringBuilder contentBuilder = new StringBuilder();
-        for (int i = 1; i < size; i++) {
-            contentBuilder.append(cont.getString(i));
-        }
-        this.content = contentBuilder.toString();
+		final int size = cont.size();
+		final StringBuilder contentBuilder = new StringBuilder();
+		for (int i = 1; i < size; i++) {
+			contentBuilder.append(cont.getString(i));
+		}
+		content = contentBuilder.toString();
 
-        this.time = json.getLongValue("time");
-        this.groupId = json.getLongValue("group_code");
-        this.userId = json.getLongValue("send_uin");
-    }
+		time = json.getLongValue("time");
+		groupId = json.getLongValue("group_code");
+		userId = json.getLongValue("send_uin");
+	}
 
-    public long getGroupId() {
-        return groupId;
-    }
+	public GroupMessage(long groupId, long time, String content, long userId, Font font) {
+		super();
+		this.groupId = groupId;
+		this.time = time;
+		this.content = content;
+		this.userId = userId;
+		this.font = font;
+	}
 
-    public void setGroupId(long groupId) {
-        this.groupId = groupId;
-    }
+	public long getGroupId() {
+		return groupId;
+	}
 
-    public long getTime() {
-        return time;
-    }
+	public void setGroupId(long groupId) {
+		this.groupId = groupId;
+	}
 
-    public void setTime(long time) {
-        this.time = time;
-    }
+	public long getTime() {
+		return time;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public void setTime(long time) {
+		this.time = time;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public long getUserId() {
-        return userId;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+	public long getUserId() {
+		return userId;
+	}
 
-    public Font getFont() {
-        return font;
-    }
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 
-    public void setFont(Font font) {
-        this.font = font;
-    }
+	public Font getFont() {
+		return font;
+	}
+
+	public void setFont(Font font) {
+		this.font = font;
+	}
 
 }

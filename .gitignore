@@ -3,3 +3,8 @@ target/
 qrcode.png
 .idea/
 xiaov.iml
+.classpath
+.project
+.settings
+push_deploy.sh
+qrcode.png
